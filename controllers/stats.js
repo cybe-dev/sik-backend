@@ -115,7 +115,7 @@ const stats = async (req, res) => {
   responseMock.success(res, 200, "Berhasil menampilkan statistik", {
     thisMonthIncome,
     thisMonthOutcome,
-    thisMonthBalance,
+    thisMonthBalance: thisMonthBalance || 0,
     thisMonthBalanceRemaining,
     recentData,
   });

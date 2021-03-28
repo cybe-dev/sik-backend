@@ -87,27 +87,35 @@ const stats = async (req, res) => {
     return;
   }
 
-  const getIncome = getTransaction.find((predicate) => {
-    return predicate.dataValues.status === "in";
-  });
-  const getOutcome = getTransaction.find((predicate) => {
-    return predicate.dataValues.status === "out";
-  });
+  try {
+    const getIncome = getTransaction.find((predicate) => {
+      return predicate.dataValues.status === "in";
+    });
+    const getOutcome = getTransaction.find((predicate) => {
+      return predicate.dataValues.status === "out";
+    });
 
-  if (getIncome) {
-    thisMonthIncome = parseInt(getIncome.dataValues.total_amount);
+    if (getIncome) {
+      thisMonthIncome = parseInt(getIncome.dataValues.total_amount);
+    }
+    if (getOutcome) {
+      thisMonthOutcome = parseInt(getOutcome.dataValues.total_amount);
+    }
+
+    if (thisMonthBalance) {
+      thisMonthBalance = thisMonthBalance.balance;
+      thisMonthBalanceRemaining =
+        thisMonthBalance + thisMonthIncome - thisMonthOutcome;
+    }
+  } catch (e) {
+    responseMock.error(res);
+    return;
   }
-  if (getOutcome) {
-    thisMonthOutcome = parseInt(getOutcome.dataValues.total_amount);
-  }
 
-  thisMonthBalanceRemaining =
-    thisMonthBalance.balance + thisMonthIncome - thisMonthOutcome;
-
-  responseMock.success(res, 200, "Sukses", {
+  responseMock.success(res, 200, "Berhasil menampilkan statistik", {
     thisMonthIncome,
     thisMonthOutcome,
-    thisMonthBalance: thisMonthBalance.balance,
+    thisMonthBalance,
     thisMonthBalanceRemaining,
     recentData,
   });

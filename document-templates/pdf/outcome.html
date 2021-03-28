@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-size: 16pt;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        border: 1px solid #000;
+        font-size: 16pt;
+        padding: 9px;
+      }
+    </style>
+    <title>Laporan Keuangan {{company}}</title>
+  </head>
+  <body>
+    <div style="text-align: center; font-size: 20pt; font-weight: bold">
+      LAPORAN KEUANGAN<br />{{company}}<br />{{periode}}
+    </div>
+    <div style="margin-top: 50px">
+      <span style="font-weight: bold">{{code}}</span>
+      <table style="width: 100%; margin-top: 20px">
+        <thead>
+          <tr>
+            <th>TANGGAL</th>
+            <th>KETERANGAN</th>
+            <th>NILAI (Rp)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each results}}
+          <tr>
+            <td style="text-align: center; width: 20%">{{this.actualDate}}</td>
+            <td>{{this.note}}</td>
+            <td style="text-align: right; width: 30%">{{this.amount}}</td>
+          </tr>
+          {{/each}}
+          <tr>
+            <td colspan="2" style="text-align: center"><b>TOTAL</b></td>
+            <td style="text-align: right">{{total}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+/node_modules
+/document-generated/pdf/*
+/document-generated/excel/*
+.env
+package-lock.json
+
+!/document-generated/pdf/.gitkeep
+!/document-generated/excel/.gitkeep

@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-size: 16pt;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        border: 1px solid #000;
+        font-size: 16pt;
+        padding: 9px;
+      }
+    </style>
+    <title>Laporan Keuangan {{company}}</title>
+  </head>
+  <body>
+    <div style="text-align: center; font-size: 20pt; font-weight: bold">
+      LAPORAN BUKU BESAR<br />{{company}}<br />
+      {{periode}}
+    </div>
+    <div style="margin-top: 50px">
+      <table style="width: 100%; margin-top: 20px">
+        <thead>
+          <tr style="background-color: #ffff99">
+            <th style="width: 15%">TANGGAL</th>
+            <th style="width: 10%">KODE</th>
+            <th>KETERANGAN</th>
+            <th style="width: 15%">DEBET</th>
+            <th style="width: 15%">KREDIT</th>
+            <th style="width: 15%">SALDO</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each results}}
+          <tr style="background-color: {{this.color}}">
+            <td style="text-align: center">{{this.date}}</td>
+            <td style="text-align: center">{{this.code}}</td>
+            <td>{{this.note}}</td>
+            <td style="text-align: right">{{this.debet}}</td>
+            <td style="text-align: right">{{this.credit}}</td>
+            <td style="text-align: right">{{this.balance}}</td>
+          </tr>
+          {{/each}}
+          <tr>
+            <td colspan="3"></td>
+            <td style="text-align: center">UANG MASUK</td>
+            <td style="text-align: center">UANG KELUAR</td>
+            <td style="text-align: center">SISA SALDO</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="text-align: center">JUMLAH</td>
+            <td style="text-align: right">{{totalDebet}}</td>
+            <td style="text-align: right">{{totalCredit}}</td>
+            <td style="text-align: right">{{balance}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

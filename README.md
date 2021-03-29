@@ -11,7 +11,6 @@ ini adalah backend dari Sistem Informasi Keuangan berbasis web yang dibangun men
 
 ## Quick Start
 
-**Instalasi**
 Silahkan melakukan configurasi database pada config/config.json, dengan mengisikan sesuai data autentikasi pada database anda.
 
 Ubah nama file .env-example menjadi .env dan lakukan penyesuaian pada JWT_SECRET_KEY dan COMPANY_NAME
